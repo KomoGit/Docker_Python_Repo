@@ -92,19 +92,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Администратор\\.nuget\\packages\\": {}
+    "C:\\Users\\Elnur\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\Desktop\\Git\\SharpTester\\SharpTester.csproj",
+      "projectUniqueName": "C:\\Users\\Elnur\\OneDrive\\Рабочий стол\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
       "projectName": "SharpTester",
-      "projectPath": "C:\\Users\\Администратор\\Desktop\\Git\\SharpTester\\SharpTester.csproj",
-      "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\Desktop\\Git\\SharpTester\\obj\\",
+      "projectPath": "C:\\Users\\Elnur\\OneDrive\\Рабочий стол\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
+      "packagesPath": "C:\\Users\\Elnur\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Elnur\\OneDrive\\Рабочий стол\\Docker_Python_Repo\\SharpTester\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Elnur\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

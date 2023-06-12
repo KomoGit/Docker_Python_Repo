@@ -6,63 +6,67 @@ namespace EdgeDriverSample
 {
     class Program
     {
-        static EdgeDriver driver = new EdgeDriver();
-        static Dictionary<string, string> XPATH = new Dictionary<string, string>();
+        static readonly EdgeDriver Driver = new();
+        static readonly Dictionary<string, string> xPathMap = new();
         static void Main(string[] args)
         {
-            XPATH.Add("Variant", "//*[@id=\"answer_1_id\"]");
-            XPATH.Add("Next", "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
-            XPATH.Add("Exit", "//*[@id=\"root\"]/div/div[1]/div/ul/li[3]/a");
-            XPATH.Add("Gray Next", "//*[@id=\"root\"]/div/div[2]/div/div[2]/div/div[2]/button");
-            driver.Url = "http://miq.exam.edu.az";
+            //Sweetspot 180 ms
             const int THREAD_CONTROLLER = 500;
-            int a = 22025;
-            int b = 22126;
-            for (int c = a; c <= b; c++)
+            const int USER_START = 22025;
+            const int USER_END = 22126;
+            #region xPath map
+            xPathMap.Add("Answer", "//*[@id=\"answer_1_id\"]");
+            xPathMap.Add("Next", "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
+            xPathMap.Add("Exit", "//*[@id=\"root\"]/div/div[1]/div/ul/li[3]/a");
+            xPathMap.Add("FINInput", "/html/body/div[3]/div/div[1]/div/div/div[2]/div[1]/div/input");
+            xPathMap.Add("FINSubmitButton", "/html/body/div[3]/div/div[1]/div/div/div[2]/div[2]/div/button");
+            #endregion
+
+            Driver.Url = "INSERT URL";
+            for (int userIndex = USER_START; userIndex <= USER_END; userIndex++)
             {
-                FillInForum(driver, $"{c}", "0522");
+                FillInLogin(Driver, $"{userIndex}", "0522");
                 Thread.Sleep(2000);
-                ClickButton(driver, XPATH["Gray Next"]);
+                ClickButton(Driver, xPathMap["Gray Next"]);
                 Thread.Sleep(2000);
-                //Variant LOOP.
+                //ANSWERS Loop
                 for (int i = 1; i <= 60; i++)
                 {
-                    //SWEETSPOT 180
-                    Console.WriteLine(i);
+                    Console.WriteLine($"Question No: {i}");
                     Thread.Sleep(THREAD_CONTROLLER);
-                    ClickButton(driver: driver, XPATH["Variant"]); //WORKS
+                    ClickButton(driver: Driver, xPathMap["Answer"]);
                     Thread.Sleep(THREAD_CONTROLLER);
                     if (i == 1)
                     {
-                        ClickButton(driver: driver, "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button");
+                        ClickButton(driver: Driver, "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button");
                     }
                     else
                     {
-                        ClickButton(driver: driver, $"//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
+                        ClickButton(driver: Driver, $"//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
                     }
                     Thread.Sleep(THREAD_CONTROLLER);
                 }
-                ClickButton(driver: driver, XPATH["Variant"]);
+                ClickButton(driver: Driver, xPathMap["Answer"]);
                 Thread.Sleep(THREAD_CONTROLLER);
-                ClickButton(driver: driver, XPATH["Next"]);
+                ClickButton(driver: Driver, xPathMap["Next"]);
                 Thread.Sleep(THREAD_CONTROLLER);
-                FillInFin(c);
+                FillInFIN(userIndex);
                 Thread.Sleep(THREAD_CONTROLLER);
-                ClickButton(driver, "/html/body/div[3]/div/div[1]/div/div/div[2]/div[2]/div/button");
+                ClickButton(Driver, xPathMap["FINSubmitButton"]);
                 Thread.Sleep(THREAD_CONTROLLER);
-                ClickButton(driver, XPATH["Exit"]);
+                ClickButton(Driver, xPathMap["Exit"]);
                 Thread.Sleep(THREAD_CONTROLLER);
             }  
         }
 
-        private static void FillInForum(EdgeDriver driver, string log, string pass)
+        private static void FillInLogin(EdgeDriver driver, string login, string paswd)
         {
             try
             {
                 IWebElement element = driver.FindElement(By.Id("email"));
-                element.SendKeys(log);
+                element.SendKeys(login);
                 element = driver.FindElement(By.Id("password"));
-                element.SendKeys(pass);
+                element.SendKeys(paswd);
                 element.Submit();
             }
             catch (Exception ex)
@@ -71,12 +75,11 @@ namespace EdgeDriverSample
             }
         }
 
-        private static void FillInFin(int a)
+        private static void FillInFIN(int a)
         {
             try
             {
-                //IWebElement element = driver.FindElement(By.XPath("//*[@id=\"email\"]"));
-                IWebElement element = driver.FindElement(By.XPath("/html/body/div[3]/div/div[1]/div/div/div[2]/div[1]/div/input"));
+                IWebElement element = Driver.FindElement(By.XPath(xPathMap["FINInput"]));
                 element.SendKeys(a.ToString());
             }
             catch (Exception e)
@@ -92,19 +95,10 @@ namespace EdgeDriverSample
                 IWebElement element = driver.FindElement(By.XPath(identifier));
                 element.Click();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e);
+                Console.WriteLine($"MALFUNCTION 54");
             }
         }
-
-
-        // LOGOUT  - text - çıxış
-        // Answer - id - answer_1_id goes from 1 to 5. Will always select 1
-        // Davam Et - XPATH - //*[@id="root"]/div/div[2]/div/div[2]/div/div[2]/button
-        // Next - XPATH - //*[@id="root"]/div/div[2]/div[4]/div/div[2]/div[2]/button
-        // Variant A - XPATH - //*[@id="answer_1_id"]
-        // FIN - ID - email
-        // FIN Button - /html/body/div[4]/div/div[1]/div/div/div[2]/div[2]/div/button
     }
 }
