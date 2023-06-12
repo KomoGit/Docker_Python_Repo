@@ -16,6 +16,7 @@ namespace EdgeDriverSample
             
             const int USER_RANGE_START = 22025;
             const int USER_RANGE_END = 22126;
+            const string USER_PASS = "0522";
 
             #region xPath map
             xPathMap.Add("Answer", "//*[@id=\"answer_1_id\"]");
@@ -28,7 +29,7 @@ namespace EdgeDriverSample
             Driver.Url = "INSERT URL";
             for (int userIndex = USER_RANGE_START; userIndex <= USER_RANGE_END; userIndex++)
             {
-                FillInLogin(Driver, $"{userIndex}", "0522");
+                FillInLogin(Driver, $"{userIndex}", USER_PASS);
                 Thread.Sleep(2000);
                 ClickButton(Driver, xPathMap["Next"]);
                 Thread.Sleep(2000);
@@ -92,6 +93,7 @@ namespace EdgeDriverSample
                 {
                     Thread.Sleep(THREAD_CONTROLLER);
                     //Incase the loop goes infinitely, use break.
+                    if (element.Enabled) break;
                 }
                 element.SendKeys(a.ToString());
             }
