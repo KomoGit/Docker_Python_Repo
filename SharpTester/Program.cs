@@ -8,12 +8,15 @@ namespace EdgeDriverSample
     {
         static readonly EdgeDriver Driver = new();
         static readonly Dictionary<string, string> xPathMap = new();
+
+        const int THREAD_CONTROLLER = 500;
         static void Main(string[] args)
         {
             //Sweetspot 180 ms
-            const int THREAD_CONTROLLER = 500;
-            const int USER_START = 22025;
-            const int USER_END = 22126;
+            
+            const int USER_RANGE_START = 22025;
+            const int USER_RANGE_END = 22126;
+
             #region xPath map
             xPathMap.Add("Answer", "//*[@id=\"answer_1_id\"]");
             xPathMap.Add("Next", "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
@@ -23,11 +26,11 @@ namespace EdgeDriverSample
             #endregion
 
             Driver.Url = "INSERT URL";
-            for (int userIndex = USER_START; userIndex <= USER_END; userIndex++)
+            for (int userIndex = USER_RANGE_START; userIndex <= USER_RANGE_END; userIndex++)
             {
                 FillInLogin(Driver, $"{userIndex}", "0522");
                 Thread.Sleep(2000);
-                ClickButton(Driver, xPathMap["Gray Next"]);
+                ClickButton(Driver, xPathMap["Next"]);
                 Thread.Sleep(2000);
                 //ANSWERS Loop
                 for (int i = 1; i <= 60; i++)
@@ -80,11 +83,21 @@ namespace EdgeDriverSample
             try
             {
                 IWebElement element = Driver.FindElement(By.XPath(xPathMap["FINInput"]));
+                /*
+                !!! MAJOR CHANGE !!!
+                While the element isn't enabled, the thread will be put to sleep for x amount of time
+                Once it becomes enabled the while loop breaks and element.SendKeys works. 
+                */
+                while (!element.Enabled)
+                {
+                    Thread.Sleep(THREAD_CONTROLLER);
+                    //Incase the loop goes infinitely, use break.
+                }
                 element.SendKeys(a.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error! Could not fill FIN. Perhaps text field is unresponsive?");
             }      
         }
 
@@ -92,12 +105,22 @@ namespace EdgeDriverSample
         {
             try
             {
+                /*
+                !!! MAJOR CHANGE !!!
+                While the element isn't enabled, the thread will be put to sleep for x amount of time
+                Once it becomes enabled the while loop breaks and element.SendKeys works. 
+                */
                 IWebElement element = driver.FindElement(By.XPath(identifier));
+                while (!element.Enabled)
+                {
+                    Thread.Sleep(THREAD_CONTROLLER);
+                    //Incase the loop goes infinitely, use break.
+                }
                 element.Click();
             }
             catch (Exception)
             {
-                Console.WriteLine($"MALFUNCTION 54");
+                Console.WriteLine("MALFUNCTION 54");
             }
         }
     }
