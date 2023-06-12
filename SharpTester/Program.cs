@@ -7,6 +7,7 @@ namespace EdgeDriverSample
     {
         static readonly EdgeDriver Driver = new();
         static readonly Dictionary<string, string> xPathMap = new();
+        static int totalExceptionCount = 0;
 
         //Sweetspot 180 ms
         const int THREAD_CONTROLLER = 500; //ms.
@@ -19,7 +20,7 @@ namespace EdgeDriverSample
             #region xPath map
             xPathMap.Add("Answer", "//*[@id=\"answer_1_id\"]");
             xPathMap.Add("Next", "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
-            xPathMap.Add("Exit", "//*[@id=\"root\"]/div/div[1]/div/ul/li[3]/a");
+            xPathMap.Add("Logout", "//*[@id=\"root\"]/div/div[1]/div/ul/li[3]/a");
             xPathMap.Add("FINInput", "/html/body/div[3]/div/div[1]/div/div/div[2]/div[1]/div/input");
             xPathMap.Add("FINSubmitButton", "/html/body/div[3]/div/div[1]/div/div/div[2]/div[2]/div/button");
             #endregion
@@ -56,8 +57,9 @@ namespace EdgeDriverSample
                 Thread.Sleep(THREAD_CONTROLLER);
                 ClickButton(Driver, xPathMap["FINSubmitButton"]);
                 Thread.Sleep(THREAD_CONTROLLER);
-                ClickButton(Driver, xPathMap["Exit"]);
+                ClickButton(Driver, xPathMap["Logout"]);
                 Thread.Sleep(THREAD_CONTROLLER);
+                Console.WriteLine($"User {userIndex} finished with {totalExceptionCount}");
             }  
         }
 
@@ -73,6 +75,7 @@ namespace EdgeDriverSample
             }
             catch (Exception ex)
             {
+                totalExceptionCount++;
                 Console.WriteLine(ex.Message);
             }
         }
@@ -97,6 +100,7 @@ namespace EdgeDriverSample
             }
             catch (Exception)
             {
+                totalExceptionCount++;
                 Console.WriteLine("Error! Could not fill FIN. Perhaps text field is unresponsive?");
             }      
         }
@@ -121,6 +125,7 @@ namespace EdgeDriverSample
             }
             catch (Exception)
             {
+                totalExceptionCount++;
                 Console.WriteLine("MALFUNCTION 54");
             }
         }
