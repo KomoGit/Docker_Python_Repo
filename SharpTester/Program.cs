@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
-using System.Threading.Tasks.Sources;
 
 namespace EdgeDriverSample
 {
@@ -9,7 +8,7 @@ namespace EdgeDriverSample
         static readonly EdgeDriver Driver = new();
         static readonly Dictionary<string, string> xPathMap = new();
 
-        const int THREAD_CONTROLLER = 500;
+        const int THREAD_CONTROLLER = 500; //ms.
         static void Main(string[] args)
         {
             //Sweetspot 180 ms
@@ -26,7 +25,7 @@ namespace EdgeDriverSample
             xPathMap.Add("FINSubmitButton", "/html/body/div[3]/div/div[1]/div/div/div[2]/div[2]/div/button");
             #endregion
 
-            Driver.Url = "INSERT URL";
+            Driver.Url = "INSERT URL";// <- CHANGE ME
             for (int userIndex = USER_RANGE_START; userIndex <= USER_RANGE_END; userIndex++)
             {
                 FillInLogin(Driver, $"{userIndex}", USER_PASS);
@@ -89,11 +88,11 @@ namespace EdgeDriverSample
                 While the element isn't enabled, the thread will be put to sleep for x amount of time
                 Once it becomes enabled the while loop breaks and element.SendKeys works. 
                 */
-                while (!element.Enabled)
+                while (!element.Enabled)//IF while works we can get rid of other Thread.Sleep() Calls.
                 {
                     Thread.Sleep(THREAD_CONTROLLER);
                     //Incase the loop goes infinitely, use break.
-                    if (element.Enabled) break;
+                    //if (element.Enabled) break; <-
                 }
                 element.SendKeys(a.ToString());
             }
@@ -116,6 +115,7 @@ namespace EdgeDriverSample
                 while (!element.Enabled)
                 {
                     Thread.Sleep(THREAD_CONTROLLER);
+                    //if (element.Enabled) break; <-
                     //Incase the loop goes infinitely, use break.
                 }
                 element.Click();
