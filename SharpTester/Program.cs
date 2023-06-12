@@ -11,39 +11,45 @@ namespace EdgeDriverSample
         {
             XPATH.Add("Variant", "//*[@id=\"answer_1_id\"]");
             XPATH.Add("Next", "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
-            XPATH.Add("Gray Next", "//*[@id=\"root\"]/div/div[2]/div/div[2]/div/div[2]/button");
             XPATH.Add("Exit", "//*[@id=\"root\"]/div/div[1]/div/ul/li[3]/a");
-            //int a = Convert.ToInt32(args[0]);
-            //int b = Convert.ToInt32(args[1]);
+            XPATH.Add("Gray Next", "//*[@id=\"root\"]/div/div[2]/div/div[2]/div/div[2]/button");
             driver.Url = "http://miq.exam.edu.az";
-            //for (int i = a; i <= b; i++)
-            //{
-                FillInForum(driver, "261797", "0522");
-                Thread.Sleep(2000);
-                ClickButton(driver: driver, XPATH["Gray Next"]);
+            int a = Convert.ToInt32(args[0]);
+            for (int c = 1; c <= a; c++)
+            {
+
+            }
+            FillInForum(driver, "22003", "0522");
+            Thread.Sleep(2000);
+            ClickButton(driver, XPATH["Gray Next"]);
+            Thread.Sleep(2000);
             //Variant LOOP.
             for (int i = 1; i <= 60; i++)
             {
                 //SWEETSPOT 180
                 Console.WriteLine(i);
                 Thread.Sleep(180);
-                ClickButton(driver: driver, XPATH["Variant"]);
-                Thread.Sleep(1000);
-                ClickButton(driver: driver, $"//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div/button[{i}]");
+                ClickButton(driver: driver, XPATH["Variant"]); //WORKS
+                Thread.Sleep(180);
+                if(i == 1)
+                {
+                    ClickButton(driver: driver, "//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button");
+                }
+                else
+                {
+                    ClickButton(driver: driver, $"//*[@id=\"root\"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]");
+                }    
                 Thread.Sleep(180);
             }
             ClickButton(driver: driver, XPATH["Variant"]);
             Thread.Sleep(180);
             ClickButton(driver: driver, XPATH["Next"]);
             Thread.Sleep(180);
-            //IWebElement element = driver.FindElement(By.Id("email"));
-            //Thread.Sleep(180);
-            //element.SendKeys("261797");
-            //Thread.Sleep(180);
-            //element.Click();
-            //Thread.Sleep(180);
-            //ClickButton(driver: driver, XPATH["Finish"]);
-            //}     
+            IWebElement element = driver.FindElement(By.Id("email"));
+            Thread.Sleep(180);
+            element.SendKeys($"");
+            Thread.Sleep(180);
+            ClickButton(driver: driver, XPATH["Finish"]);   
         }
 
         private static void FillInForum(EdgeDriver driver, string log, string pass)
@@ -72,7 +78,7 @@ namespace EdgeDriverSample
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                driver.Quit();
+                //driver.Quit();
             }
         }
 
