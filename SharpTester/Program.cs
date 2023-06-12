@@ -1,18 +1,17 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 
-namespace EdgeDriverSample
+namespace EdgeDriverSample 
 {
     class Program
     {
         static readonly EdgeDriver Driver = new();
         static readonly Dictionary<string, string> xPathMap = new();
 
+        //Sweetspot 180 ms
         const int THREAD_CONTROLLER = 500; //ms.
         static void Main(string[] args)
-        {
-            //Sweetspot 180 ms
-            
+        {            
             const int USER_RANGE_START = 22025;
             const int USER_RANGE_END = 22126;
             const string USER_PASS = "0522";
