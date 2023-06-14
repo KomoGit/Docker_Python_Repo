@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "n0sACiyFTfAgzfomAWiu/22gKRGA1oomVA88rKqp1WyxlqtNsS/MbA83jJPfsGf2OXrxnTjgtYlea9z5XHf9kw==",
+  "dgSpecHash": "Urulz8Q0bqz9KgWmZH7aUAJ9sIBDI52jnPGbuKbnf5L7iB4GCVDnCuXmmolxBRiF4h0NCDmeXKsmJsu2tqdL0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Elnur\\OneDrive\\Рабочий стол\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\Desktop\\silinmisikilmis\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Elnur\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\Elnur\\.nuget\\packages\\selenium.webdriver\\4.10.0\\selenium.webdriver.4.10.0.nupkg.sha512"
+    "C:\\Users\\Администратор\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\selenium.webdriver\\4.10.0\\selenium.webdriver.4.10.0.nupkg.sha512"
   ],
   "logs": []
 }

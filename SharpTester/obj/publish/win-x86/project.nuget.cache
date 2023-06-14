@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "HKZTZnogJ9jwzv96DD3+ei1h7kx8QCb5GvGrsr7LBARdIPWhNrDSOreDzuy+bTrOGMyV+ApNRxK3lv43cV57mQ==",
+  "dgSpecHash": "kBzhxdVhWHQk+JJ93CTt6m4KK1kJPvCq/rbZo+Qy5KDwx/FjIhGxwl00QdVbiiBOtqJqYBpdGIZxylTFlQCZxQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Elnur\\OneDrive\\Рабочий стол\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\Desktop\\Docker_Python_Repo\\SharpTester\\SharpTester.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Elnur\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\Elnur\\.nuget\\packages\\selenium.webdriver\\4.10.0\\selenium.webdriver.4.10.0.nupkg.sha512",
-    "C:\\Users\\Elnur\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.16\\microsoft.netcore.app.runtime.win-x86.6.0.16.nupkg.sha512",
-    "C:\\Users\\Elnur\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.16\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.16.nupkg.sha512",
-    "C:\\Users\\Elnur\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.16\\microsoft.aspnetcore.app.runtime.win-x86.6.0.16.nupkg.sha512"
+    "C:\\Users\\Администратор\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\selenium.webdriver\\4.10.0\\selenium.webdriver.4.10.0.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.16\\microsoft.netcore.app.runtime.win-x86.6.0.16.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.16\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.16.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.16\\microsoft.aspnetcore.app.runtime.win-x86.6.0.16.nupkg.sha512"
   ],
   "logs": []
 }

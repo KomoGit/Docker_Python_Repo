@@ -1,0 +1,5 @@
+C:\Users\Администратор\Desktop\Docker_Python_Repo\SharpTester\bin\Release\net6.0\publish\win-x86\SharpTester.pdb
+C:\Users\Администратор\Desktop\Docker_Python_Repo\SharpTester\bin\Release\net6.0\publish\win-x86\selenium-manager\linux\selenium-manager
+C:\Users\Администратор\Desktop\Docker_Python_Repo\SharpTester\bin\Release\net6.0\publish\win-x86\selenium-manager\macos\selenium-manager
+C:\Users\Администратор\Desktop\Docker_Python_Repo\SharpTester\bin\Release\net6.0\publish\win-x86\selenium-manager\windows\selenium-manager.exe
+C:\Users\Администратор\Desktop\Docker_Python_Repo\SharpTester\bin\Release\net6.0\publish\win-x86\SharpTester.exe
